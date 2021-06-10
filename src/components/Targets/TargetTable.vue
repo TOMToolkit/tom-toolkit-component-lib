@@ -22,10 +22,7 @@ export default {
                 { 'key': 'ra' },
                 { 'key': 'dec' },
             ],
-            targets: [
-                {'name': 'M31', 'type': 'SIDEREAL', 'observations': 2, 'saved_data': 2},
-                {'name': 'M41', 'type': 'SIDEREAL', 'observations': 0, 'saved_data': 0},
-            ]
+            targets: []
         }
     },
     methods: {
