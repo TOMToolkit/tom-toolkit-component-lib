@@ -35,6 +35,7 @@ export default {
             .get('http://localhost:8000/api/targets/')
             .then(response => {
                 console.log(response);
+                // results key is only present when djangorestframework page size exists in settings.py
                 this.targets = response['data']['results'];
                 console.log(this.targets);
             });
