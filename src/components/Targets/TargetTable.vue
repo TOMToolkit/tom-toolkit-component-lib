@@ -27,12 +27,12 @@ export default {
     },
     methods: {
         initializeDataEndpoint: function() {
-            return 'http://localhost:8000/api/targets/'; // TODO: make this configurable
+            return 'http://127.0.0.1:8000/api/targets/'; // TODO: make this configurable
         },
     },
     mounted() {
         axios
-            .get('http://localhost:8000/api/targets/')
+            .get('http://127.0.0.1:8000/api/targets/')
             .then(response => {
                 console.log(response);
                 // results key is only present when djangorestframework page size exists in settings.py
