@@ -38,7 +38,12 @@ export default {
                 // results key is only present when djangorestframework page size exists in settings.py
                 this.targets = response['data']['results'];
                 console.log(this.targets);
-            });
+            })
+            .catch(
+                error => {
+                    console.log(error);
+                }
+            );
     }
 }
 </script>
