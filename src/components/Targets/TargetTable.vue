@@ -14,6 +14,9 @@ import axios from 'axios';
 export default {
     name: 'TargetTable',
     components: {},
+    props: {
+        tomApiEndpoint: String
+    },
     data() {
         return {
             targetFields: [
@@ -26,13 +29,11 @@ export default {
         }
     },
     methods: {
-        initializeDataEndpoint: function() {
-            return 'http://127.0.0.1:8000/api/targets/'; // TODO: make this configurable
-        },
     },
     mounted() {
+        console.log(this.tomApiEndpoint);
         axios
-            .get('http://127.0.0.1:8000/api/targets/')
+            .get(this.tomApiEndpoint + '/api/targets/')
             .then(response => {
                 console.log(response);
                 // results key is only present when djangorestframework page size exists in settings.py
