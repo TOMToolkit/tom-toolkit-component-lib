@@ -1,4 +1,6 @@
 import * as components from './components'; // TODO: can this be @/components?
+import * as TTKMixin from '@/mixins';
+
 //// import Vue from 'vue'
 //// import App from './App.vue'
 
@@ -28,4 +30,4 @@ if (GlobalVue) {
   GlobalVue.use(TOMToolkitComponentLib);
 }
 
-export { TOMToolkitComponentLib };
+export { TOMToolkitComponentLib, TTKMixin };
