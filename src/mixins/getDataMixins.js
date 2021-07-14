@@ -36,8 +36,6 @@ export var getDataMixin = {
         axios
           .get(this.dataEndpoint)
           .then(response => {
-            console.log('getDataMixin.getData response:');
-            console.log(response);
             this.successCallback(response);
           })
           .catch(
