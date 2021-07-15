@@ -8,14 +8,16 @@
         </b-table>
     </b-container>
 </template>
-<script>
-import axios from 'axios';
 
+<script>
 export default {
     name: 'TargetTable',
     components: {},
     props: {
-        tomApiEndpoint: String
+      targets: {
+        type: Array,
+        required: true
+      },
     },
     data() {
         return {
@@ -25,26 +27,9 @@ export default {
                 { 'key': 'ra' },
                 { 'key': 'dec' },
             ],
-            targets: []
         }
     },
     methods: {
     },
-    mounted() {
-        console.log(this.tomApiEndpoint);
-        axios
-            .get(this.tomApiEndpoint + '/api/targets/')
-            .then(response => {
-                console.log(response);
-                // results key is only present when djangorestframework page size exists in settings.py
-                this.targets = response['data']['results'];
-                console.log(this.targets);
-            })
-            .catch(
-                error => {
-                    console.log(error);
-                }
-            );
-    }
 }
 </script>
