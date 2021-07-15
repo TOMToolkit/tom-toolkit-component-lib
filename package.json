@@ -1,6 +1,6 @@
 {
   "name": "tom-toolkit-component-lib",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "private": false,
   "scripts": {
     "prepare": "vue-cli-service build --target lib --name tom-toolkit-component-lib src/main.js",

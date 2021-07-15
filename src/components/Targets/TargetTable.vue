@@ -17,7 +17,7 @@ export default {
       targets: {
         type: Array,
         required: true
-        },
+      },
     },
     data() {
         return {
