@@ -1,35 +1,44 @@
 <template>
-    <b-container>
-        <div>This is a TargetTable</div>
-        <b-table 
-            striped
-            :fields="targetFields"
-            :items="targets">
-        </b-table>
-    </b-container>
+  <b-container>
+    <b-table :fields="targetFields" :items="targets">
+      <template v-if="selectable === true" #cell(selected)="row">
+        <b-form-checkbox @change="$emit('selected-target', row, $event)" />
+      </template>
+    </b-table>
+  </b-container>
 </template>
 
 <script>
 export default {
-    name: 'TargetTable',
-    components: {},
-    props: {
-      targets: {
-        type: Array,
-        required: true
-      },
+  name: 'TargetTable',
+  components: {},
+  props: {
+    selectable: {
+      type: Boolean,
+      required: false,
+      default: true
     },
-    data() {
-        return {
-            targetFields: [
-                { 'key': 'id', 'sortable': true },
-                { 'key': 'name', 'sortable': true },
-                { 'key': 'ra' },
-                { 'key': 'dec' },
-            ],
-        }
+    targets: {
+      type: Array,
+      required: true
     },
-    methods: {
+  },
+  computed: {
+    targetFields() {
+      let targetFields = [];
+      if (this.selectable) {
+        targetFields.push({ 'key': 'selected', 'label': '' });
+      }
+      targetFields.push(
+        ...[
+          { 'key': 'id', 'sortable': true },
+          { 'key': 'name', 'sortable': true },
+          { 'key': 'ra' },
+          { 'key': 'dec' },
+        ]
+      );
+      return targetFields;
     },
-}
+  },
+};
 </script>
