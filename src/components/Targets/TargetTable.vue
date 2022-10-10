@@ -21,24 +21,17 @@ export default {
     targets: {
       type: Array,
       required: true
-    },
+    }
   },
   computed: {
     targetFields() {
       let targetFields = [];
       if (this.selectable) {
-        targetFields.push({ 'key': 'selected', 'label': '' });
+        targetFields.push({ key: 'selected', label: '' });
       }
-      targetFields.push(
-        ...[
-          { 'key': 'id', 'sortable': true },
-          { 'key': 'name', 'sortable': true },
-          { 'key': 'ra' },
-          { 'key': 'dec' },
-        ]
-      );
+      targetFields.push(...[{ key: 'id', sortable: true }, { key: 'name', sortable: true }, { key: 'ra' }, { key: 'dec' }]);
       return targetFields;
-    },
-  },
+    }
+  }
 };
 </script>

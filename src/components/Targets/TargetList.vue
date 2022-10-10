@@ -1,7 +1,6 @@
 <template>
   <div id="target-list">
-    <ttk-target-table :selectable="selectable" :targets="targets">
-    </ttk-target-table>
+    <ttk-target-table :selectable="selectable" :targets="targets"> </ttk-target-table>
   </div>
 </template>
 
@@ -12,11 +11,6 @@ export default {
   name: 'TargetList',
   components: {},
   mixins: [getDataMixin],
-  data() {
-    return {
-      targets: [],
-    };
-  },
   props: {
     tomApiBaseUrl: {
       type: String,
@@ -26,18 +20,23 @@ export default {
       type: Boolean,
       required: false,
       default: false
-    },
+    }
+  },
+  data: function() {
+    return {
+      targets: []
+    };
   },
   methods: {
     // these methods override stubs in the getDataMixin
-    initializeDataEndpoint: function () {
+    initializeDataEndpoint: function() {
       return this.tomApiBaseUrl + '/api/targets/';
     },
-    onSuccessfulRetrieval: function (response) {
+    onSuccessfulRetrieval: function(response) {
       // extract the target data from the reponse
       this.targets = response['data']['results'];
       return response; // like overridden method in getDataMixin
-    },
+    }
   }
 };
 </script>
@@ -50,5 +49,5 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
-};
+}
 </style>

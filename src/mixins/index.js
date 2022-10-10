@@ -1,3 +1,3 @@
-import {getDataMixin} from './getDataMixins.js'
+import { getDataMixin } from './getDataMixins.js';
 
-export {getDataMixin};
+export { getDataMixin };

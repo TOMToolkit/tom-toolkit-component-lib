@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 
 export var getDataMixin = {
   /*
@@ -6,7 +6,7 @@ export var getDataMixin = {
   The `initializeDataEndpoint()` function must be overridden. This mixin works well with the DataLoader
   component.
   */
-  data: function () {
+  data: function() {
     const dataEndpoint = this.initializeDataEndpoint();
     return {
       dataLoadError: false,
@@ -16,21 +16,21 @@ export var getDataMixin = {
       dataEndpoint: dataEndpoint
     };
   },
-  created: function () {
+  created: function() {
     this.getData();
   },
   methods: {
-    initializeDataEndpoint: function () {
+    initializeDataEndpoint: function() {
       // Override this method to initialize the endpoint from which data will be retrieved.
       return '';
     },
-    setDataEndpoint: function (newEndpoint) {
+    setDataEndpoint: function(newEndpoint) {
       this.dataEndpoint = newEndpoint;
     },
-    initializeEmptyData: function () {
+    initializeEmptyData: function() {
       return {};
     },
-    getData: function () {
+    getData: function() {
       this.clearLoadStates();
       //let that = this;
       axios
@@ -38,19 +38,16 @@ export var getDataMixin = {
         .then(response => {
           this.successCallback(response);
         })
-        .catch(
-          error => {
-            console.log('error');
-            console.log(error);
-          }
-        );
+        .catch(error => {
+          process.stdout.write('error: ' + error + '\n');
+        });
     },
-    clearLoadStates: function () {
+    clearLoadStates: function() {
       this.dataLoaded = false;
       this.dataLoadError = false;
       this.dataNotFound = false;
     },
-    failCallback: function (response) {
+    failCallback: function(response) {
       if (response.status === 404 || response.status === 403) {
         this.dataNotFound = true;
       } else {
@@ -58,15 +55,15 @@ export var getDataMixin = {
       }
       this.onDataRetrievalError(response);
     },
-    successCallback: function (response) {
+    successCallback: function(response) {
       this.data = response;
       this.onSuccessfulRetrieval(response);
     },
-    onSuccessfulRetrieval: function (response) {
+    onSuccessfulRetrieval: function(response) {
       // Override this function to run an action when data retrieval is successful.
       return response;
     },
-    onDataRetrievalError: function (response) {
+    onDataRetrievalError: function(response) {
       // Override this function to run an action when data retrieval errors.
       return response;
     }
